@@ -16,11 +16,11 @@
     <div class="col-sm-8">
 
         <h4>{{$pelicula['title']}}</h4>
-        <h6>A&ntilde;o: {{$pelicula['year']}}</h6>
-        <h6>Director: {{$pelicula['director']}}</h6>
-        <p><strong>Resumen:</strong> {{$pelicula['synopsis']}}</p>
+        <h6>A&ntilde;o: {{$pelicula->year}}</h6>
+        <h6>Director: {{$pelicula->director}}</h6>
+        <p><strong>Resumen:</strong> {{$pelicula->synopsis}}</p>
         <p><strong>Estado: </strong>
-            @if($pelicula['rented'])
+            @if($pelicula->rented)
                 Pel&iacute;cula actualmente alquilada.
             @else
                 Pel&iacute;cula en stock.
