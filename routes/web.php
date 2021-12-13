@@ -15,7 +15,7 @@ use App\Http\Controllers\CatalogController;
 |
 */
 
-Route::get('/', [HomeController::class, 'getHome']);
+Route::get('/', [HomeController::class, 'getHome'])->name('dashboard');
 
 Route::group(['prefix' => 'catalog', 'middleware' => 'auth'], function () {
 

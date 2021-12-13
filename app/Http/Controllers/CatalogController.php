@@ -11,13 +11,16 @@ class CatalogController extends Controller
     {
         $peliculas = Movie::all();
         return view('catalog.index',
-        array('arrayPeliculas' => $peliculas));
+        array(
+            'header' => 'Listado de películas',
+            'arrayPeliculas' => $peliculas));
     }
 
     public function getShow($id)
     {
         return view('catalog.show',
         array(
+            'header' => 'Película',
             'pelicula' => Movie::find($id)));
     }
 
@@ -30,6 +33,7 @@ class CatalogController extends Controller
     {
         return view('catalog.edit',
         array(
+            'header' => 'Película',
             'id' => $id,
             'pelicula' => Movie::find($id)));
     }
