@@ -22,6 +22,7 @@ Route::group(['prefix' => 'catalog', 'middleware' => 'auth'], function () {
     Route::get('/', [CatalogController::class, 'getIndex'])->name('dashboard');
 
     Route::get('/show/{id}', [CatalogController::class, 'getShow']);
+    Route::put('/changeRented/{id}', [CatalogController::class, 'changeRented']);
 
     Route::get('/create', [CatalogController::class, 'getCreate']);
     Route::post('/create', [CatalogController::class, 'postCreate']);
