@@ -23,6 +23,8 @@ Route::group(['prefix' => 'catalog'], function () {
 
     Route::get('/show/{id}', [CatalogController::class, 'getShow']);
 
+    Route::put('/cambiarestado', [CatalogController::class, 'changeRented']);
+
     Route::get('/create', [CatalogController::class, 'getCreate']);
 
     Route::get('/edit/{id}', [CatalogController::class, 'getEdit']);
