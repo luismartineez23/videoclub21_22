@@ -21,12 +21,16 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
-Route::apiResource('peliculas', MovieController::class)
-->parameters([
-    'peliculas' => 'movie'
-]);
+Route::group( ['middleware' => 'auth:sanctum'],function () {
+
+    Route::apiResource('peliculas', MovieController::class)
+    ->parameters([
+        'peliculas' => 'movie'
+    ]);
 
 Route::get('/peliculas/search/{search}', [MovieController::class, 'search']);
+
+});
 
 Route::post('/tokens/create', function (Request $request) {
     $request->validate([
@@ -49,9 +53,5 @@ Route::post('/tokens/create', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::middleware('auth:sanctum')->get(MovieController::class, function (Request $request) {
     return $request->user();
 });
