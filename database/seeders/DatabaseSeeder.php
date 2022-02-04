@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        self::seedCatalog();
+        //self::seedCatalog();
         self::seedUsers();
         $this->command->info('Tabla catálogo inicializada con datos!');
     }
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
     private static function seedUsers()
     {
-        User::truncate();
+        //User::truncate();
         // Crear 2 registros de usuario
         \App\Models\User::factory(2)->create();
         // Crear al administrador
@@ -40,8 +40,33 @@ class DatabaseSeeder extends Seeder
             'name' => env('ADMIN_NAME', 'admin'),
             'email' => env('ADMIN_EMAIL', 'email.email.com'),
             'password' => bcrypt(env('ADMIN_PASSWORD', 'alumno')),
+            'administrador' => false,
+            'proveedor' => false
         ]);
 
+        User::create([
+            'name' => 'luis',
+            'email' => 'luis@gmail.com',
+            'password' => bcrypt('luis'),
+            'administrador' => true,
+            'proveedor' => false
+        ]);
+
+        User::create([
+            'name' => 'profesor',
+            'email' => 'profesor@gmail.com',
+            'password' => bcrypt('profesor'),
+            'administrador' => false,
+            'proveedor' => true
+        ]);
+
+        User::create([
+            'name' => 'sinPermisos',
+            'email' => 'sinPermisos@peliculas.com',
+            'password' => bcrypt('sinPermisos'),
+            'administrador' => false,
+            'proveedor' => false
+        ]);
     }
 
     private static function seedCatalog()
