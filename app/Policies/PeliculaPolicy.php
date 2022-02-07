@@ -19,7 +19,10 @@ class PeliculaPolicy
      */
     public function before(User $user, $ability)
     {
-        return $user->isAdministrador();
+
+        if ($user->esAdministrador()) {
+            return true;
+        }
     }
 
     /**
@@ -53,7 +56,7 @@ class PeliculaPolicy
      */
     public function create(User $user)
     {
-        return $user->isProveedor();
+        return $user->esProveedor();
     }
 
     /**
@@ -77,7 +80,7 @@ class PeliculaPolicy
      */
     public function delete(User $user, Movie $movie)
     {
-        return $user->isProveedor();
+        return $user->esProveedor();
     }
 
     /**
