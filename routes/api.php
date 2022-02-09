@@ -10,6 +10,8 @@ use Illuminate\Validation\ValidationException;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+use App\Http\Controllers\API\DirectorController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,6 +33,8 @@ Route::group( ['middleware' => 'auth:sanctum'],function () {
 Route::get('/peliculas/search/{search}', [MovieController::class, 'search']);
 
 });
+
+Route::apiResource('directores', DirectorController::class);
 
 Route::post('/tokens/create', function (Request $request) {
     $request->validate([

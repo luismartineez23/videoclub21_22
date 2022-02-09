@@ -7,6 +7,9 @@ use App\Policies\PeliculaPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
+use App\Models\Director;
+use App\Policies\DirectorPolicy;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +21,8 @@ class AuthServiceProvider extends ServiceProvider
         //'App\Models\Model' => 'App\Policies\ModelPolicy',
         Movie::class => PeliculaPolicy::class,
         //'App\Models\Model' => 'App\Policies\PeliculaPolicy',
+
+        Director::class => DirectorPolicy::class,
     ];
 
     /**
